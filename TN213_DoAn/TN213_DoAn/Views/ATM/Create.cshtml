@@ -1,0 +1,103 @@
+﻿@model TN213_DoAn.Models.ATM
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>ATM</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <label class="control-label col-md-2">Xã phường</label>
+            <div class="col-md-10">
+                @Html.DropDownList("MAXP", (IEnumerable<SelectListItem>)ViewBag.listXP , "Chọn xã phường", htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.MAXP, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Mức độ an toàn</label>
+            <div class="col-md-10">
+                @Html.DropDownList("MAAT", (IEnumerable<SelectListItem>)ViewBag.listAT, "Chọn mức độ an toàn", htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.MAAT, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Tên ATM</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.TENATM, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.TENATM, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Địa chỉ</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DIACHIATM, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.DIACHIATM, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">SĐT</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.SDTATM, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.SDTATM, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Giờ mở cửa</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.MOCUAATM, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.MOCUAATM, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Giờ đóng cửa</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DONGCUAATM, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.DONGCUAATM, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Ngân hàng</label>
+            <div class="col-md-10">
+                @Html.DropDownList("MANH", (IEnumerable<SelectListItem>)ViewBag.listNH, "Chọn ngân hàng", htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.MANH, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Tọa độ</label>
+            <div class="col-md-10">
+                <input type="text" name="kinhdo" value="kinhdo" id="kinhdo" />
+                <input type="text" name="vido" value="vido" id="vido" />
+                <div id="mapaddpoint"></div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index", "Home")
+</div>
+<link href="~/Content/css/mapAddPoint.css" rel="stylesheet" />
+<script src="~/Content/js/mapAddPoint.js"></script>

@@ -1,0 +1,60 @@
+﻿@model IEnumerable<TN213_DoAn.Models.ATM>
+
+@{
+    ViewBag.Title = "ATM";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>ATM</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create", "ATM")
+<table class="table">
+    <tr>
+        <th>
+            Ngân hàng
+        </th>
+        <th>
+            Xã/Phường
+        </th>
+        <th>
+            Địa chỉ
+        </th>
+        <th>
+            Mở cửa
+        </th>
+        <th>
+            Đóng cửa
+        </th>
+        <th>Mức độ an toàn</th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.NGANHANG.TENNH)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.XAPHUONG.TENXP)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.DIACHIATM)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.MOCUAATM)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.DONGCUAATM)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.ANTOAN.MUCDOAT)
+    </td>
+    <td>
+        <a href="/ATM/Edit/@item.MAATM">Edit</a> |
+        <a href="/ATM/Delete/@item.MAATM">Delete</a>
+    </td>
+</tr>
+}
+
+</table>
